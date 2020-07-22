@@ -25,7 +25,29 @@ public class Product {
         this.reserved = reserved;
     }
 
+    public Product(int id, String name, String description, LocalDate createDate, int place_storage, boolean reserved) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.createDate = createDate;
+        this.place_storage = place_storage;
+        this.reserved = reserved;
+    }
+
     //Function
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", createDate=" + createDate +
+                ", place_storage=" + place_storage +
+                ", reserved=" + reserved +
+                '}';
+    }
+
 
     //Getter and Setter
 

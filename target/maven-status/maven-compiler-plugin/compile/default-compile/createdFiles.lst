@@ -1,0 +1,8 @@
+app\controllers\ProductController.class
+app\config\AppProperties.class
+app\DAO\ProductDAO.class
+app\Main.class
+app\config\SpringConfig.class
+app\domain\Product.class
+app\config\DispatcherServlet.class
+app\service\ProductService.class
