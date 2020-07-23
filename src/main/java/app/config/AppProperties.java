@@ -16,7 +16,7 @@ public class AppProperties {
 
     public static Properties getProperties(){
         try {
-            properties.load(new FileInputStream("src/main/resources/config.properties"));
+            properties.load(new FileInputStream("config.properties"));
         } catch (IOException e) {
             logger.log(Level.SEVERE, null, e);
         }

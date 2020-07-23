@@ -1,10 +1,39 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="utf-8">
     <title>Starting page</title>
 </head>
 <body>
         This is starting page!
+        <table border="1" cellpadding="5" id="List of products">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Create date</th>
+                <th>Place storage</th>
+                <th>Reserved</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="Product:${allProduct}">
+                <td th:text="${Product.id}">1</td>
+                <td th:text="${Product.name}">2</td>
+                <td th:text="${Product.description}">3</td>
+                <td th:text="${Product.createDate}">4</td>
+                <td th:text="${Product.place_storage}">5</td>
+                <td th:text="${Product.reserved}">6</td>
+                <td>
+                    <a href="/edit?id=${product.id}">Edit</a>
+
+                    <a href="/delete?id=${product.id}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
 </body>
 </html>
