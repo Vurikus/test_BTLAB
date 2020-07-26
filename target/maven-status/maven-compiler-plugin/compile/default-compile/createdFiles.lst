@@ -2,7 +2,6 @@ app\controllers\ProductController.class
 app\config\AppProperties.class
 app\DAO\ProductRowMapper.class
 app\DAO\ProductDAO.class
-app\Main.class
 app\config\SpringConfig.class
 app\domain\Product.class
 app\config\DispatcherServlet.class

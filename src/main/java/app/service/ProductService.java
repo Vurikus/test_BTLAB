@@ -19,8 +19,8 @@ public class ProductService {
     public void addProduct(Product product){
         productDAO.addProduct(product);
     }
-    public void removeProduct(Product product){
-        productDAO.removeProduct(product);
+    public void removeProduct(int id){
+        productDAO.removeProduct(id);
     }
     public void updateProduct(Product product){
         productDAO.updateProduct(product);

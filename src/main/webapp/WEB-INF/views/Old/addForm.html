@@ -1,0 +1,14 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <h3>Adding form for new Product</h3>
+        <form th:action="@{/add}" th:object="${newProduct}" method="post">
+            <p>name: <input type="text" th:field="*{name}" /></p>
+            <p><input type="submit" value="Add" /></p>
+</form>
+</body>
+</html>

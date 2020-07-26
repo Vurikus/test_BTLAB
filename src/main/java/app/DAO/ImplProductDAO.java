@@ -25,7 +25,8 @@ public class ImplProductDAO implements ProductDAO {
     //Constructor
 
     //Function
- 
+
+
     @Override
     public void addProduct(Product product) {
         jdbcTemplate().update("insert into product (name, description, create_date, place_storage, reserved) values (?, ?, ?, ?, ?)",
@@ -33,8 +34,8 @@ public class ImplProductDAO implements ProductDAO {
     }
 
     @Override
-    public void removeProduct(Product product) {
-        jdbcTemplate().update("delete from product where id=?", product.getId());
+    public void removeProduct(int id) {
+        jdbcTemplate().update("delete from product where id=?", id);
     }
 
     @Override
@@ -54,6 +55,7 @@ public class ImplProductDAO implements ProductDAO {
         List <Product> result = jdbcTemplate().query("select * from product", new ProductRowMapper());
         return result;
     }
+
 
     public JdbcTemplate jdbcTemplate() {
         return new JdbcTemplate(dataSource());

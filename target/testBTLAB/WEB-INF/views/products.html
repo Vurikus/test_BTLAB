@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Products</title>
+</head>
+<body>
+<div class="container">
+    <div th:if="${not #lists.isEmpty(products)}">
+        <h2>All Products</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Create date</th>
+                <th>Place storage</th>
+                <th>Reserved</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="product: ${products}">
+                <td th:text="${product.id}">Id</td>
+                <td th:text="${product.name}">Name</td>
+                <td th:text="${product.description}">Description</td>
+                <td th:text="${product.createDate}">Create date</td>
+                <td th:text="${product.place_storage}">Place storage</td>
+                <td th:text="${product.reserved}">Reserved</td>
+                <td><a th:href="${'/products/edit/' + product.id}" class="btn btn-default">Edit</a></td>
+                <td><a th:href="${'/products/delete/' + product.id}" class="btn btn-danger">Delete</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+    <input type="button" value="new Product" onclick="location.href='/products/add'">
+</body>
+</html>
