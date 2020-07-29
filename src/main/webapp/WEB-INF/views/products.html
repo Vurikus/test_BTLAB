@@ -1,8 +1,41 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head lang="en">
+<head>
     <title>Products</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        /* Article FructCode.com */
+        $( document ).ready(function() {
+            $("#btn").click(
+                function(){
+                    sendAjaxForm('result_form', 'ajax_form');
+                    return false;
+                }
+            );
+        });
+        var url = '/products';
+
+        function sendAjaxForm(result_form, ajax_form) {
+            $.ajax({
+                url:     url, //url страницы (action_ajax_form.php)
+                type:     'POST', //метод отправки
+                dataType: "html", //формат данных
+                data: $("#"+ajax_form).serialize(),  // Сеарилизуем объект
+                success: function(response) { //Данные отправлены успешно
+                    result = $.parseJSON(response);
+                    $('#result_form').html(result.name+'<br>'+ result.description +'<br>'+ result.createDate +'<br>'+ result.place_storage
+                        +'<br>'+ result.reserved);
+                },
+                error: function(response) { // Данные не отправлены
+                    $('#result_form').html('Error');
+                }
+            });
+        }
+    </script>
+
+
 </head>
 <body>
 <div class="container">
@@ -32,6 +65,23 @@
         </table>
     </div>
 </div>
+
+    <form th:object="${product}" method="post" id="ajax_form" action="/products" >
+        <input type="text" name="name" placeholder="Name" th:field="*{name}" /><br>
+        <input type="text" name="description" placeholder="Description" th:field="*{description}"/><br>
+        <input type="text" name="createDate" placeholder="Create date" th:field="*{createDate}" /><br>
+        <input type="text" name="place_storage" placeholder="Place storage" th:field="*{place_storage}"/><br>
+        <input type="text" name="reserved" placeholder="Reserved" th:field="*{reserved}"/><br>
+        <input type="button" id="btn" value="Save" />
+    </form>
+
+    <br>
+
+    <div id="result_form"></div>
+
     <input type="button" value="new Product" onclick="location.href='/products/add'">
+
+
+
 </body>
 </html>

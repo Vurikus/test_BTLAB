@@ -3,6 +3,7 @@ package app.controllers;
 import app.domain.Product;
 import app.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,9 +18,10 @@ public class ProductController {
     private ProductService productService;
 
 //    Function
-    @GetMapping("/")
+    @RequestMapping(value = "/", produces = "text/plain;charset=UTF-8")
     public String index(Model model) {
         model.addAttribute("products", productService.getAllProduct());
+        model.addAttribute("product", new Product());
         return "products";
     }
 
@@ -30,6 +32,7 @@ public class ProductController {
     }
 
     @PostMapping("/products")
+    @ResponseBody
     public String saveProduct(Product product) {
         productService.addProduct(product);
         return "redirect:/";
